@@ -1,0 +1,35 @@
+# Worker Configuration
+# Workers can be defined here in YAML or in Python code
+# Code-based workers override YAML if names collide
+
+workers:
+  # Example YAML-based worker (disabled by default)
+  - name: translation_expert
+    type: yaml
+    description: "Translates text between languages and provides language support"
+    capabilities:
+      - translation
+      - language
+      - translate
+      - multilingual
+    priority: 5
+    enabled: false  # Enable when MCP server is available
+    mcp_server:
+      transport: sse
+      url: http://localhost:8004/sse
+      timeout: 30
+  
+  # Code-based workers (type: code means look for Python implementation)
+  # These entries are optional - code workers are auto-discovered
+  - name: weather_expert
+    type: code
+    # You can override settings from code here if needed
+    enabled: true
+  
+  - name: news_expert
+    type: code
+    enabled: true
+  
+  - name: research_expert
+    type: code
+    enabled: true
