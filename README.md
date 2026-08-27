@@ -1,6 +1,6 @@
 # LangGraph Multi-Agent System
 
-Production-ready multi-agent orchestration system with dynamic worker discovery, conversation management, and OpenAI-compatible API.
+Multi-agent orchestration system with dynamic worker discovery, conversation management, and an OpenAI-compatible API.
 
 ## Architecture
 
@@ -225,13 +225,7 @@ Supported transport types:
 
 ## Testing
 
-```bash
-# Run tests
-pytest tests/
-
-# Run with coverage
-pytest --cov=. tests/
-```
+An automated test suite is not included yet. Verify changes by running the API locally (see Quick Start) and exercising the `/v1/chat/completions` endpoint; `example.py` and `example_living_plan.py` provide end-to-end walkthroughs.
 
 ## API Endpoints
 

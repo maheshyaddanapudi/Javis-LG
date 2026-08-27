@@ -328,6 +328,6 @@ gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker
 
 ---
 
-**Status**: Production-ready ✅
+**Status**: Working prototype
 **Last Updated**: 2025-01-XX
 **Version**: 1.0.0
