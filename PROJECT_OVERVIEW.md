@@ -3,7 +3,7 @@
 ## Complete File Structure
 
 ```
-langgraph-multi-agent/
+Javis-LG/
 ├── README.md                      # Comprehensive documentation
 ├── QUICKSTART.md                  # Quick start guide
 ├── requirements.txt               # Python dependencies

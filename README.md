@@ -51,8 +51,8 @@ User Input
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd langgraph-multi-agent
+git clone https://github.com/maheshyaddanapudi/Javis-LG.git
+cd Javis-LG
 
 # Create virtual environment
 python -m venv venv
@@ -107,12 +107,18 @@ curl -X POST http://localhost:8000/v1/chat/completions \
 ## Project Structure
 
 ```
-langgraph-multi-agent/
+Javis-LG/
 ├── requirements.txt          # Python dependencies
 ├── README.md                 # This file
+├── QUICKSTART.md             # Short getting-started guide
+├── PROJECT_OVERVIEW.md       # Project overview
+├── LIVING_PLAN.md            # Living plan design
+├── LIVING_PLAN_ARCHITECTURE.md
 ├── .env.example             # Environment template
 ├── main.py                  # Application entry point
 ├── app.py                   # Main orchestrator
+├── example.py               # End-to-end walkthrough
+├── example_living_plan.py   # Living plan walkthrough
 ├── config/
 │   └── workers.yaml         # YAML worker definitions
 ├── db/
@@ -121,6 +127,7 @@ langgraph-multi-agent/
 ├── agents/
 │   ├── __init__.py
 │   ├── base.py             # BaseWorkerAgent interface
+│   ├── callbacks.py        # Execution tracking callbacks (living plan sync)
 │   ├── registry.py         # Worker auto-discovery
 │   ├── intent_router.py    # Intent classification
 │   ├── planning.py         # Plan creation/updates
@@ -219,9 +226,12 @@ Supported transport types:
 |----------|---------|-------------|
 | ENVIRONMENT | dev | `dev` or `prod` |
 | OPENAI_API_KEY | required | OpenAI API key |
-| DATABASE_URL | sqlite | PostgreSQL URL for production |
+| OPENAI_MODEL | gpt-4o | Chat model used by all agents |
+| DATABASE_URL | `sqlite+aiosqlite:///./agent_dev.db` in dev | PostgreSQL URL (required when `ENVIRONMENT=prod`) |
 | API_HOST | 0.0.0.0 | API server host |
 | API_PORT | 8000 | API server port |
+| LOG_LEVEL | info | Server log level (`DEBUG` also enables SQL echo) |
+| MAX_REFLECTION_ITERATIONS | 2 | Max reflection/quality-loop retries |
 
 ## Testing
 
@@ -269,6 +279,16 @@ OpenAI-compatible chat completion endpoint.
 
 Health check endpoint.
 
+### GET /v1/models
+
+OpenAI-compatible model list.
+
+### GET /workers
+
+Lists discovered workers (code and YAML).
+
+Interactive API docs are served at `/docs`.
+
 ## Troubleshooting
 
 ### Workers Not Discovered
@@ -291,8 +311,8 @@ Health check endpoint.
 
 ## License
 
-MIT
+No license file is included yet; all rights reserved unless a license is added.
 
 ## Contributing
 
-Contributions welcome! Please read CONTRIBUTING.md for guidelines.
+Issues and pull requests are welcome.
