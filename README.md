@@ -311,7 +311,7 @@ Interactive API docs are served at `/docs`.
 
 ## License
 
-No license file is included yet; all rights reserved unless a license is added.
+MIT License — see [LICENSE](LICENSE).
 
 ## Contributing
 
